@@ -1,0 +1,44 @@
+.carousel-item img {
+    object-fit: cover;
+    object-position: top;
+    height: 60vh;
+    overflow: hidden;
+}
+
+.navbarr {
+    background-color: rgba(0, 0, 0, 0.7); /* Adjust the alpha value for transparency */
+}
+
+.not-visible {
+    display: none;
+}
+
+.container_images {
+    display: flex;
+    flex-wrap: wrap; /* Allow images to wrap to the next row */
+    justify-content: space-between;
+    margin: 0 -7px; /* Add negative margin to compensate for padding */
+}
+
+.container_images .image_container {
+    position: relative;
+    flex: 0 0 calc(33.33% - 30px); /* Adjust width to fit 3 images in a row with padding */
+    padding: 5px;
+    margin-bottom: 15px; /* Add margin for spacing between rows */
+    height: fit-content;
+}
+
+.container_images .image_container img {
+    width: 100%;
+    border-radius: 5px;
+    max-width: 100%;
+    display: inline-block;
+    height: auto;
+    vertical-align: middle;
+}
+
+.download_button {
+    position: absolute;
+    bottom: 17px;
+    right: 17px;
+}

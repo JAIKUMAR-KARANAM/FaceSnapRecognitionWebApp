@@ -1,0 +1,114 @@
+{%extends 'client/layouts/main.html'%}
+{%block content%}
+{%include 'client/layouts/carosel.html'%}
+<br>
+<div class="container">
+   <section class="py-4" >
+      <div class="container">
+         {% include 'client/layouts/message.html' %}
+        <div class="row">
+         <figure>
+            <blockquote class="blockquote">
+              <p>"When words become unclear, I shall focus with photographs. When images become inadequate, I shall be content with silence."
+
+               </p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+              <cite title="Source Title"> Ansel Adams</cite>
+            </figcaption>
+          </figure>
+          
+          <div class="col-8">
+
+            <form id='myForm' method="post" action="" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="mb-4">
+                <label for="" class="form-label">User Name</label>
+                {{form.name}}
+                {% if form.errors.name %}
+               <label class="text-danger d-block">{{ form.errors.name }}</label>
+               {% endif %}
+              </div>
+              
+
+              <div class="mb-4">
+                <label for="" class="form-label">User Email</label>
+                {{form.email}}
+                   
+   {% if form.errors.email %}
+   <label class="text-danger d-block">{{ form.errors.email }}</label>
+   {% endif %}
+              </div>
+              <div class="mb-4">
+                <label for="" class="form-label">Mobile No</label>
+                {{form.phone_number}}
+                {% if form.errors.phone_number %}
+                <label class="text-danger d-block">{{ form.errors.phone_number }}</label>
+                {% endif %}
+              </div>
+		<div class="mb-4">
+                <label for="" class="form-label">Image</label>
+                {{form.image}}
+                {% if form.errors.image %}
+               <label class="text-danger d-block">{{ form.errors.image }}</label>
+               {% endif %}
+ 
+              </div>
+              <div id='spinner' class="text-center mt-3 ">
+              <div class="spinner-grow "  style=" width: 3rem; height: 3rem;" role="status">
+               
+              </div>
+            </div>
+         
+              <center><button type="submit" class="btn btn-primary" id="sub">Get My Pics</button></center>
+            </form>
+</div>
+<div class="col-6">
+   
+
+ 
+
+ 
+   
+</div>
+   {%endblock content%}
+   {%block script%}
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('myForm');
+    const submitButton = document.getElementById('sub');
+    const spinnerBox = document.getElementById('spinner');
+    spinnerBox.classList.add('not-visible');
+    
+    // Function to check if all form fields are valid
+    function isFormValid() {
+        // Implement your validation logic here, return true if valid, false otherwise
+        const name = form.querySelector('input[name="name"]').value;
+        const email = form.querySelector('input[name="email"]').value;
+        const phone_number = form.querySelector('input[name="phone_number"]').value;
+        const image = form.querySelector('input[name="image"]').value;
+        
+        // Example validation: All fields must not be empty
+        return name.trim() !== '' && email.trim() !== '' && phone_number.trim() !== '' && image.trim() !== '';
+    }
+    
+    form.addEventListener('input', function () {
+        // Enable the submit button only if the form is valid
+        submitButton.disabled = !isFormValid();
+    });
+    
+    form.addEventListener('submit', function (e) {
+        if (!isFormValid()) {
+            e.preventDefault(); // Prevent form submission if it's not valid
+            return;
+        }
+
+        // Show the spinner and change the button text
+        spinnerBox.classList.remove('not-visible');
+        submitButton.innerHTML = 'Loading...';
+    });
+});
+    
+   
+   </script>
+    {%endblock script%}

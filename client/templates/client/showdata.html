@@ -1,0 +1,42 @@
+{% extends 'client/layouts/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+  .image_container img {
+    height: 100%; /* Set a fixed height for the images */
+    width: 100%;  /* Maintain the aspect ratio */
+    object-fit: cover; /* Ensure the entire image is visible within the container */
+  }
+</style>
+
+<br>
+<div class="container">
+  <h1>{{ res }}</h1>
+  <hr>
+  {% if imgs %}
+    <div class="container_images">
+      <div class="row">
+        {% for img in imgs %}
+          <div class="col-md-4 mb-4">
+            <div class="image_container">
+              <img 
+                src="{% static img %}"
+                alt="{{ img }}"
+                class="img-fluid"
+              />
+              <a href="{% static img %}" download class="download_button">
+                <button type="button" class="btn btn-light">
+                  <i class="fa-solid fa-download fa-bounce"></i>
+                </button>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+{% endblock content %}

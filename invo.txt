@@ -1,0 +1,25 @@
+step 1:- selection of platform
+
+	1.django
+	2.html(bootstrap)
+	3.face recognizer module
+step 2:- form design
+	datas required:-
+	home page:-
+		form
+			1.name
+			2.email id
+			3.phone number
+			4.photo
+			5. submit button
+
+step 3:- getting the form values and photo
+		
+
+step 4:- store the values in database
+
+
+step 5:- by using the photo find the all photos of candidate using the face recogizer in python
+
+
+step 6:- send the photos to the whatappnumber or email id
